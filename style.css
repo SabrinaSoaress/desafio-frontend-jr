@@ -1,0 +1,297 @@
+/* Reset de estilos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+    height: 100vh;
+    justify-content: flex-start;
+}
+
+/* Estilos principais do calendário */
+.calendar {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    overflow: auto;
+    background-color: white;
+    margin: 20px;
+    border-radius: 28px;
+    box-shadow: 0px 8px 12px 6px #00000026;
+}
+
+/* Estilos para a barra de rolagem */
+.calendar::-webkit-scrollbar {
+    width: 10px;
+}
+
+.calendar::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+    border-radius: 6px;
+}
+
+.calendar::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+/* Header fixo e botões */
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 28px;
+    padding: 30px;
+    z-index: 1000;
+}
+
+.buttons {
+    display: flex;
+    gap: 12px;
+}
+
+button {
+    background: #F2F2F7;
+    border-radius: 10px;
+    color: #75747480;
+    padding: 12px 14px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #E0E0E0;
+    color: #5856d6;
+    transform: scale(1.1);
+}
+
+/* Tabela do calendário */
+.calendar-table {
+    display: table;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.horario-coluna {
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f4f4;
+}
+
+.hora {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Cabeçalho dos dias */
+.cabecalho-dias {
+    position: sticky;
+    top: 102px;
+    z-index: 500;
+    background-color: white;
+    font-weight: bold;
+    display: flex;
+}
+
+.cabecalho-dias .dias {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.dia-atual {
+    color: #5856d6;
+}
+
+/* Estilo das datas */
+.data-completa .mes {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.data-completa .dia {
+    margin: 4px 0;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.data-completa .dia-semana {
+    font-weight: 400;
+    font-size: 14px;
+    color: gray;
+}
+
+/* Coluna vazia */
+.coluna-vazia {
+    border-top: 1px solid #ddd;
+    flex: 0 0 80px;
+    background-color: transparent;
+}
+
+/* Horário da coluna */
+.hora-dia {
+    color: #8e8e93;
+    text-align: center;
+    width: 80px;
+    font-size: 12px;
+}
+
+/* Linha de eventos */
+.linha-eventos {
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: row;
+}
+
+/* Estilo dos eventos */
+.evento {
+    font-size: 14px;
+    opacity: 50%;
+    color: rgb(0, 0, 0);
+    flex: 1;
+    padding: 5px;
+    text-align: center;
+    height: 50px;
+    border-radius: 12px;
+}
+
+.evento:hover {
+    opacity: 100%;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.evento-item {
+    padding-top: 2px;
+    margin: 2px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+/* Hora atual */
+.hora-atual {
+    font-weight: bold;
+    position: relative;
+}
+/* Linha da hora atual */
+.hora-atual::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 60px;
+    width: 94%;
+    height: 1px;
+    background-color: #5856d6;
+}
+/* Bolinha da hora atual */
+.hora-atual::before {
+    content: ''; 
+    position: absolute;
+    top: 50%; 
+    left: 53%; 
+    transform: translate(-50%, -50%);
+    width: 8px; 
+    height: 8px; 
+    background-color: #5856d6; 
+    border-radius: 50%;
+    z-index: 10; 
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .calendar {
+        width: 90%;
+        margin: 10px;
+    }
+
+    .header {
+        align-items: flex-start;
+    }
+
+    .buttons {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .cabecalho-dias {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .cabecalho-dias .dia {
+        width: 100%;
+        padding: 8px;
+    }
+
+    .hora-dia {
+        font-size: 10px;
+    }
+
+    .evento {
+        height: 40px;
+        font-size: 12px;
+    }
+
+    .hora-atual::before {
+        left: 57%; 
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar {
+        width: 100%;
+        margin: 5px;
+    }
+
+    .header {
+        margin: 20px;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .buttons {
+        flex-direction: row;
+        gap: 8px;
+    }
+
+    .cabecalho-dias {
+        flex-direction: row;
+    }
+
+    .cabecalho-dias .dia {
+        width: 100%;
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    .hora-dia {
+        font-size: 8px;
+    }
+
+    .evento {
+        height: 35px;
+        font-size: 10px;
+    }
+
+    .hora-atual::before {
+        left: 59%; 
+    }
+}
